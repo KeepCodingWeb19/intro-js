@@ -1,10 +1,5 @@
 console.log('02');
 
-// Asignación
-
-const x = 10;
-const y = 5;
-
 // aritméticos
 const firstProductName = 'T-shirt';
 const firstProductPrice = 15;
@@ -77,3 +72,18 @@ console.log(!hasStock); // true
 const thirdProductName = 'Pants',
   thirdProductPrice = 55,
   thirdProductQuantity = 2;
+
+// Asignación
+
+let x = 10;
+let y = 5;
+
+// x = x + 2;
+x += 2;
+console.log(x);
+// y = y - 2;
+y -= 2;
+console.log(y);
+y++; // y = y + 1
+y--; // y = y - 1
+
