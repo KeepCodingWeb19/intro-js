@@ -50,3 +50,7 @@ const product1 = article(tShirt, 2);
 const product2 = article(cap, 3);
 console.log(product1);
 console.log(product2);
+
+(() => {
+  console.log('Holaaa');
+})();
