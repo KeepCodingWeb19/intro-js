@@ -63,3 +63,27 @@ if (day === 'Monday') {
   message4 = 'No hay clase';
 }
 */
+const productAName = "T-shirt";
+const productAPrice = 20;
+const productAQuantity = 2;
+
+const productBName = "Cap";
+const productBPrice = 35;
+const productBQuantity = 1;
+
+const productCName = "Socks";
+const productCPrice = 10;
+const productCQuantity = 3;
+
+const total = productAPrice * productAQuantity + productBPrice * productBQuantity + productCPrice * productCQuantity;
+
+let message5 = "";
+if (total < 50) {
+  message5 = "Puedes agregar más productos" ;
+} else if (total <= 100)  {
+  message5 =  "Estás cerca de tu límite de compra";
+} else {
+  message5 = "Has alcanzado el límite de tu compra" ;
+}
+
+console.log (`Total: ${total} — ${message5}` );
