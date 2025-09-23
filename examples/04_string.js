@@ -24,7 +24,7 @@ console.log(Number(promptPrice));
 console.log(+promptPrice);
 
 const email2 = prompt('Dime un correo');
-if (email2 === null) {
+if (!email2) {
   // Lanzar un error propio
   throw new Error('Email requerido');
 }
