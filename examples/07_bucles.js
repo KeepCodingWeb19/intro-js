@@ -71,3 +71,38 @@ for (let num of numbers) {
 
 console.log('even:', evenNumbers, 'odd: ', oddNumbers);
 */
+let counter = 0;
+while (counter < fruits.length) {
+  console.log(fruits[counter]);
+  counter++;
+}
+// benchmark
+
+const bannedProducts = ['aceitunas', 'salmon', 'pipas'];
+
+const getInfo = (message, bannedItems) => {
+  let listaCompra = [];
+  while (true) {
+    const producto = prompt(message);
+    if (!producto) break;
+    const normalizeProduct = producto.trim().toLowerCase();
+    if (bannedItems.includes(normalizeProduct)) continue;
+    listaCompra = [...listaCompra, normalizeProduct];
+  }
+  return listaCompra;
+};
+/*
+const compra = getInfo('Dame productos', bannedProducts);
+const repaso = getInfo('Que vas a repasar hoy', []);
+*/
+
+// console.log(compra, repaso);
+
+const usersProducts = [
+  ['Tv', 'PC'], // 0 -> ['TV', 'PC']
+  ['Cap', 'T-shirt'], // 1 -> ['Cap', 'T-shirt']
+  ['Pants', 'Jeans'], // 2 -> ['Pants', 'Jeans']
+];
+
+console.log(usersProducts[1]); // ['Cap', 'T-shirt']
+console.log(usersProducts[1][1]); // T-shirt
