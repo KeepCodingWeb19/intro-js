@@ -10,9 +10,9 @@ const secondProductQuantity = 2;
 // objects
 const firstProduct = {}; // new Object();
 
-firstProduct.name = 'T-shirt';
-firstProduct['total-price'] = 35;
-firstProduct.quantity = 2;
+firstProduct.name = firstProductName;
+firstProduct['total-price'] = firstProductPrice;
+firstProduct.quantity = firstProductQuantity;
 firstProduct.available = false;
 firstProduct.sizes = ['L', 'XL', 'XXL'];
 
@@ -23,9 +23,9 @@ firstProduct.attributes.material = 'cotton';
 console.log(firstProduct);
 
 const secondProduct = {
-  name: 'Cap',
-  'total-price': 35,
-  quantity: 2,
+  name: secondProductName,
+  'total-price': secondProductPrice,
+  quantity: secondProductQuantity,
   available: false,
   sizes: ['L', 'XL', 'XXL'],
   attributes: {
@@ -74,3 +74,38 @@ console.log(getProductAttribute(secondProduct, 'name'), getProductAttribute(seco
 console.log(Object.keys(secondProduct));
 console.log(Object.values(secondProduct));
 // console.log(Object.entries(secondProduct));
+const products = [firstProduct, secondProduct];
+console.clear();
+
+const shows = [
+  {
+    id: 1,
+    name: 'Under the dome',
+    genres: ['Drama', 'Science-Fiction', 'Thriller'],
+  },
+  {
+    id: 2,
+    name: 'Game of thrones',
+    genres: ['Drama'],
+  },
+  {
+    id: 3,
+    name: 'Wednesday',
+    genres: ['Drama'],
+  },
+];
+
+const firstShow = shows[0];
+const lastShow = shows[shows.length - 1];
+
+let info = '';
+for (const show of shows) {
+  if (show.name === 'Under the dome') continue;
+  info = `
+    ${info}
+    <h2>${show.name}</h2>
+    <p>${show.genres.join(' - ')}</p>
+  `;
+}
+
+document.writeln(info);
