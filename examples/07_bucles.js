@@ -99,10 +99,26 @@ const repaso = getInfo('Que vas a repasar hoy', []);
 // console.log(compra, repaso);
 
 const usersProducts = [
-  ['Tv', 'PC'], // 0 -> ['TV', 'PC']
+  ['Tv', 'PC', 'PS5', 'PS4'], // 0 -> ['TV', 'PC']
   ['Cap', 'T-shirt'], // 1 -> ['Cap', 'T-shirt']
   ['Pants', 'Jeans'], // 2 -> ['Pants', 'Jeans']
 ];
 
 console.log(usersProducts[1]); // ['Cap', 'T-shirt']
 console.log(usersProducts[1][1]); // T-shirt
+console.log(usersProducts[2][1]); // Jeans
+console.clear();
+
+let products = '';
+
+for (let index = 0; index < usersProducts.length; index ++) {
+  const row = usersProducts[index];
+  products = `${products},${row.join(',')}`;
+  /*
+  for (const column of row) {
+    products = `,${products}${column}`;
+  }
+  */
+}
+
+console.log(products);
