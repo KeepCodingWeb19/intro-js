@@ -229,11 +229,3 @@ console.log(fav2000Books(books));
 console.log(fav2000Books(books));
 console.log(fav2000Books(books));
 console.clear('original', books);
-
-// destructuring
-
-const { author } = { title: 'Twilight', author: 'Stephenie Meyer', year: 2005 };
-const [, pos2] = ['apple', 'kiwi', 'lemon'];
-
-console.log(author);
-console.log(pos2);
