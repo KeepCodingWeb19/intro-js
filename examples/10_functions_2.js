@@ -75,3 +75,28 @@ console.log(user1.getProducts());
 console.log(user2.getProducts());
 console.clear();
 // funciones como param
+const operations = (num1, num2, operation) => {
+  if (operation === 'suma') {
+    return num1 + num2;
+  } else if (operation === 'resta') {
+    return num1 - num2;
+  }
+};
+
+console.log(operations(2, 2, 'suma')); // 4
+console.log(operations(3, 4, 'resta')); // -1
+
+const operationsV2 = (num1, num2, callback) => {
+  return callback(num1, num2);
+};
+
+const resta = (num1, num2) => num1 - num2;
+const producto = (num1, num2) => num1 * num2;
+
+console.log(operationsV2(1, 2, suma));
+console.log(operationsV2(2, 2, producto));
+
+
+operationsV2(1, 2, (num1, num2) => {
+  return num1 * num2 + 10;
+});
