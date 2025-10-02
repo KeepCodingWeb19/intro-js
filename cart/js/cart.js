@@ -50,6 +50,10 @@ const cart = () => {
    * @returns {number} The total price of the products in the cart.
    */
   const getTotal = () => {
+    const result = products.reduce((accum, product) => {
+      return accum + (product.price * product.quantity);
+    }, 0);
+    return result;
   };
 
   /**
@@ -59,6 +63,28 @@ const cart = () => {
    * @throws {Error} If the product is not found in the product list.
    */
   const applyDiscount = (productName, discount) => {
+    const product = products.find(product => (
+      productName === product.name
+    ));
+    // error si no existe
+    if (!product) {
+      throw new Error(`No existe el producto ${productName}`);
+    }
+    const discountNumber = parseInt(discount);
+    // guardar descuento
+    discounts = [...discounts, {
+      product,
+      discount: discountNumber,
+    }];
+    // aplicar el descuento al producto
+    products = products.map((product) => {
+      if (product.name === productName) {
+        const priceDiscount = product.price * (discountNumber / 100);
+        const price = product.price - priceDiscount;
+        return { ...product, price };
+      }
+      return product;
+    });
   };
 
   /**
@@ -66,6 +92,10 @@ const cart = () => {
    * @param {string} productName - The name of the product to remove.
    */
   const removeProduct = (productName) => {
+    products = products.filter(({ name }) => productName !== name);
+    discounts = discounts.filter(discount => (
+      discount.product.name !== productName
+    ));
   };
 
   /**
@@ -73,6 +103,22 @@ const cart = () => {
    * @param {string} productName - The name of the product to remove the discount from.
    */
   const removeDiscount = (productName) => {
+    // descuento con el precio original
+    const discount = discounts.find(discount => {
+      return discount.product.name === productName;
+    });
+    // borrado del descuento
+    discounts = discounts.filter(discount => (
+      discount.product.name !== productName
+    ));
+    // actualizar el producto con el precio original
+    const originalPrice = discount.product.price;
+    products = products.map(product => {
+      if (product.name === productName) {
+        return { ...product, price: originalPrice };
+      }
+      return product;
+    });
   };
 
   return { addToCart, getCart, applyDiscount, getDiscounts, removeDiscount, removeProduct, getTotal };
@@ -97,6 +143,8 @@ cart1.addToCart({
 console.log(cartBeforeNewProducts);
 console.log(cart1.getCart());
 console.log(cart1.getDiscounts());
-
+cart1.removeProduct('shoe');
+cart1.applyDiscount('cap', '20');
+console.log(cart1.getCart());
 
 export default cart;
