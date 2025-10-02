@@ -92,3 +92,45 @@ const total = numbersReduce.reduce(function (acum, element) {
 }, 0);
 
 console.log(total);
+
+const calculadora = () => {
+  let result = 0;
+
+  const validar = (number) => {
+    if (typeof number !== 'number') {
+      throw new Error('El argumento debe ser un número');
+    }
+  };
+
+  const sumar = (number) => {
+    validar(number);
+    result += number;
+  };
+  const restar = (number) => {
+    validar(number);
+    result -= number;
+  };
+  const multiplicar = (number) => {
+    validar(number);
+    result *= number;
+  };
+  const dividir = (number) => {
+    validar(number);
+    if (number === 0) {
+      throw new Error('No se puede dividir por 0');
+    }
+    result /= number;
+  };
+  const total = () => result;
+
+  return { sumar, restar, multiplicar, dividir, total };
+};
+
+const miCalculadora = calculadora();
+
+console.log(miCalculadora.sumar(5)); // Debería imprimir undefined
+console.log(miCalculadora.restar(2)); // Debería imprimir undefined
+console.log(miCalculadora.multiplicar(4)); // Debería imprimir undefined
+console.log(miCalculadora.dividir(2)); // Debería imprimir undefined
+console.log(miCalculadora.sumar(10)); // Debería imprimir undefined
+console.log(miCalculadora.total()); // Debería imprimir 16
