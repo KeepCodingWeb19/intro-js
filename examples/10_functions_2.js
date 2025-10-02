@@ -36,14 +36,14 @@ const products = [
   { name: 'T-shirt', price: 20, quantity: 2 },
   { name: 'Cap', price: 5, quantity: 3 },
   { name: 'Pants', price: 50, quantity: 1 },
-  { name: 'Shoes', price: 0, quantity: 0 },
+  { name: 'Shoes', price: 0, quantity: 1 },
 ];
 
 const cart = () => {
   let products = [];
 
   const addProduct = ({ name, price, quantity }) => {
-    if (name !== undefined && price !== undefined && quantity !== undefined) {
+    if (name !== undefined && price !== undefined && quantity) {
       products = [...products, {
         name,
         price,
